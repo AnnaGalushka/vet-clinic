@@ -4,25 +4,26 @@ import java.util.Objects;
 
 public class Dog extends Pet {
 
-    public static final String XS = "XS";
-    public static final String S = "S";
-    public static final String M = "M";
-    public static final String L = "L";
-    public static final String XL = "XL";
+    private Size size;
 
-    private String size;
+    public Dog() {
+    }
 
-    public Dog() { }
+    public Dog(Size size) {
+        this.size = size;
+    }
 
-    public Dog(String size) {
+    public Dog(String type, String sex, String age, String name, String ownerName, HealthState healthState, Size size) {
+        super(type, sex, age, name, ownerName, healthState);
         this.size = size;
     }
 
 
     @Override
     public String toString() {
-        return "Dog {" +
-                "type = " + getType() +
+        return "{" +
+                "health state = " + getHealthState() +
+                ", type = " + getType() +
                 ", sex = " + getSex() +
                 ", age = " + getAge() +
                 ", name = " + getName() +
@@ -46,10 +47,31 @@ public class Dog extends Pet {
     }
 
 
-    public void setSize(String size) {
+    public void setSize(Size size) {
         this.size = size;
     }
-    public String getSize() {
+
+    public Size getSize() {
         return size;
+    }
+
+    public enum Size {
+
+        XS(1),
+        S(2),
+        M(3),
+        L(4),
+        XL(5),
+        UNKNOWN(0);
+
+        private final int value;
+
+        Size(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
     }
 }

@@ -9,11 +9,46 @@ public abstract class Pet {
     private String age;
     private String name;
     private String ownerName;
+    private HealthState healthState;
+
+    public Pet() {
+
+    }
+
+    public Pet(String type, String sex, String age, String name, String ownerName, HealthState healthState) {
+        this.type = type;
+        this.sex = sex;
+        this.age = age;
+        this.name = name;
+        this.ownerName = ownerName;
+        this.healthState = healthState;
+    }
+
+
+    public enum HealthState {
+        EMERGENCY(1),
+        HOSPITALIZATION(2),
+        HOME_TREATMENT(3),
+        CONSULTATION(4),
+        HEALTHY(5),
+        UNKNOWN(0);
+
+        private final int value;
+
+        HealthState(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
+        }
+    }
 
     @Override
     public String toString() {
         return "Pet {" +
-                "type = " + type +
+                "health state = " + healthState +
+                ", type = " + type +
                 ", sex = " + sex +
                 ", age = " + age +
                 ", name = " + name +
@@ -30,12 +65,13 @@ public abstract class Pet {
                 && Objects.equals(sex, pet.sex)
                 && Objects.equals(age, pet.age)
                 && Objects.equals(name, pet.name)
-                && Objects.equals(ownerName, pet.ownerName);
+                && Objects.equals(ownerName, pet.ownerName)
+                && healthState == pet.healthState;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, sex, age, name, ownerName);
+        return Objects.hash(type, sex, age, name, ownerName, healthState);
     }
 
     public String getType() {
@@ -76,5 +112,13 @@ public abstract class Pet {
 
     public void setOwnerName(String ownerName) {
         this.ownerName = ownerName;
+    }
+
+    public HealthState getHealthState() {
+        return healthState;
+    }
+
+    public void setHealthState(HealthState healthState) {
+        this.healthState = healthState;
     }
 }
