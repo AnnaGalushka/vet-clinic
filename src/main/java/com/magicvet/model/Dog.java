@@ -21,15 +21,17 @@ public class Dog extends Pet {
 
     @Override
     public String toString() {
-        return "{" +
-                "health state = " + getHealthState() +
-                ", type = " + getType() +
-                ", sex = " + getSex() +
-                ", age = " + getAge() +
-                ", name = " + getName() +
-                ", ownerName = " + getOwnerName() +
-                ", size = " + size +
-                "}";
+        return "Pet {"
+                + "health state = " + getHealthState()
+                + " type = " + getType()
+                + ", sex = " + getSex()
+                + ", age = " + getAge()
+                + ", name = " + getName()
+                + ", size = " + getSize()
+                + ", ownerName = " + getOwnerName()
+                + ", registrationDate = " + getRegistrationDate().format(FORMATTER)
+                + "}";
+
     }
 
     @Override

@@ -1,23 +1,29 @@
 package com.magicvet.model;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Client {
 
-   private String firstName;
-   private String lastName;
-   private String email;
-   private Pet pet;
+    static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
 
-   @Override
-   public String toString() {
-       return "Client {"
-               + "\n\tfirstName = " + firstName
-               + ", lastName = " + lastName
-               + ", email = " + email
-               + ",\n\tpet = " + pet
-               + "\n}";
-   }
+    private String firstName;
+    private String lastName;
+    private String email;
+    private Pet pet;
+    private final LocalDateTime registrationDateClient = LocalDateTime.now();
+
+    @Override
+    public String toString() {
+        return "Client {"
+                + "\n\tfirstName = " + firstName
+                + ", lastName = " + lastName
+                + ", email = " + email
+                + ", registrationDate = " + registrationDateClient.format(DATE_TIME_FORMATTER)
+                + ",\n\tpet = " + pet
+                + "\n}";
+    }
 
     @Override
     public boolean equals(Object object) {
@@ -65,5 +71,9 @@ public class Client {
 
     public Pet getPet() {
         return pet;
+    }
+
+    public LocalDateTime getRegistrationDateClient() {
+        return registrationDateClient;
     }
 }
