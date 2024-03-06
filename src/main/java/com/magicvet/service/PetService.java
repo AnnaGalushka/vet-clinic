@@ -38,7 +38,7 @@ public class PetService {
         System.out.print("Sex (male / female): ");
         pet.setSex(Main.SCANNER.nextLine());
 
-        System.out.println("Health state(EMERGENCY / HOSPITALIZATION / HOME_TREATMENT / CONSULTATION / HEALTHY / UNKNOWN): ");
+        System.out.print("Health state(EMERGENCY / HOSPITALIZATION / HOME_TREATMENT / CONSULTATION / HEALTHY / UNKNOWN): ");
         pet.setHealthState(Pet.HealthState.valueOf(Main.SCANNER.nextLine()));
 
         if (type.equals(DOG_TYPE)) {
